@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 
 const LogIn = () => {
-  
   const dispath = useDispatch();
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
   const handleLogin = async () => {
@@ -26,6 +26,7 @@ const LogIn = () => {
       dispath(addUser(res?.data?.user));
       navigate("/");
     } catch (err) {
+      setError(err.response.data);
       console.error(err);
     }
   };
@@ -61,6 +62,7 @@ const LogIn = () => {
               />
             </label>
           </div>
+          {error && <p className="text-red-500">{error}</p>}
           <div className="card-actions justify-center">
             <button className="btn btn-primary" onClick={handleLogin}>
               Log In
