@@ -37,7 +37,7 @@ const Connections = () => {
             key={connection._id}
           >
             <div>
-              <img className="w-20 h-20 " alt="photo" src={photoUrl} />
+              <img className="w-20 h-20 rounded-full object-cover" alt="photo" src={photoUrl} />
             </div>
             <div className="text-left mx-4">
               <h2 className="font-bold text-xl">
